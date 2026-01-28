@@ -1,9 +1,9 @@
-grad = [0, 0]
+import values_xywalpha as values
 
-for j in range(2):          # columnas
-    suma = 0
-    for i in range(3):      # filas
-        suma = suma + X[i][j] * e[i]
-    grad[j] = suma
-
-print("X^T e =", grad)
+#Traemos el error "e" que se calcula en el main
+def calcular_gradiente(e):
+    #sumamos (columna_x * error)
+    # Gradiente para peso 1 y peso 2
+    g0 = sum(map(lambda fila,err: fila[0] * err, values.x, e))
+    g1 = sum(map(lambda fila, err: fila[1] * err, values.x, e))
+    return [g0, g1]
