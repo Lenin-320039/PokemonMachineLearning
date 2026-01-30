@@ -1,13 +1,25 @@
+from values_xywalpha import *
 
-import values_xwyalpha as values
 
-#!Esto corresponde a cuanto espero que aprenda realmente el pokémon despues de los combates
-y_hat = []
 
-for i in range(3):          # 3 filas
-    valor = 0
-    for j in range(2):      # 2 columnas
-        valor = valor + values.X[i][j] * values.w[j]
-    y_hat.append(valor)
+def predecir_fila(fila):
+    # Multiplicamos habilidad * peso y sumamos el resultado
+    return sum(map(lambda val, peso: val * peso, fila, w))
 
-#print("y_hat =", y_hat)
+# Obtenemos y_hat (predicciones)
+y_hat = list(map(predecir_fila, x))
+
+#ERROR CUADRATICO
+#Comparamos y_real vs y_hat para ver que tanto fallo el instinto de Arcanine
+
+def calcular_error_cuadratico(reales, predichos):
+    n = len(reales)
+    # Calculamos (real - predicho) a la 2 para cada par de datos
+    diferencias_sq = map(lambda r, p: (r - p) ** 2, reales, predichos)
+    #promediamos el resultado
+    return sum(diferencias_sq) / n
+error_total = calcular_error_cuadratico(y_real, y_hat)
+
+#RESULTADOS
+print(f"Predicciones de Arcanine (y_hat): {y_hat}")
+print(f"error Cuadratico Medio: {error_total}")
