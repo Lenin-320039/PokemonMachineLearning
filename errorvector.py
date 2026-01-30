@@ -1,9 +1,6 @@
-import values_xwyalpha as values
+import values_xywalpha as values
 import y_predictiva as yp
 
-e = []
-
-for i in range(3):
-    e.append(values.y[i] - yp.y_hat[i])
-
-#print("error e =", e)
+#Se calcula el vector de error "e"
+# e = y_real - y_hat
+e = list(map(lambda r, p: r - p, values.y_real, yp.y_hat))
