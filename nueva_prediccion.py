@@ -1,9 +1,8 @@
-y_hat2 = []
+import values_xywalpha as values
+import ajuste_pesos as ap
 
-for i in range(3):
-    valor = 0
-    for j in range(2):
-        valor = valor + X[i][j] * w[j]
-    y_hat2.append(valor)
+#Se usan los pesos nuevos para calcular la prediccione mejorada
+def predecir_mejorado(fila):
+    return sum(map(lambda val, peso: val * peso, fila, ap.w_nuevos))
 
-print("y_hat2 =", y_hat2)
+y_hat_nueva = list(map(predecir_mejorado, values.x))
