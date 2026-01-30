@@ -1,11 +1,9 @@
-e2 = []
+import values_xywalpha as values
+import nueva_prediccion as np
 
-for i in range(3):
-    e2.append(y[i] - y_hat2[i])
+#1 calculamos el nuevo vector de error (e_nuevo)
+e_nuevo = list(map(lambda r, p: r - p, values.y_real, np.y_hat_nueva))
 
-ErrorTotal2 = 0
-for i in range(3):
-    ErrorTotal2 = ErrorTotal2 + e2[i] * e2[i]
-
-print("error nuevo =", e2)
-print("ErrorTotal2 =", ErrorTotal2)
+#2 Calculamos el nuevo Error Total
+#Sumamos los cuadrados de cada elemento del vector e_nuevo
+ErrorTotal_nuevo = sum(map(lambda err: err ** 2, e_nuevo))
