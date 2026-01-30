@@ -1,9 +1,9 @@
 import values_xywalpha as values
+import errorvector as evector
 
-#Traemos el error "e" que se calcula en el main
-def calcular_gradiente(e):
-    #sumamos (columna_x * error)
-    # Gradiente para peso 1 y peso 2
-    g0 = sum(map(lambda fila,err: fila[0] * err, values.x, e))
-    g1 = sum(map(lambda fila, err: fila[1] * err, values.x, e))
-    return [g0, g1]
+#Calculamos el gradiente (X transpuesta por e)
+# Columna 0 y columna 1
+grad = [
+    sum(map(lambda fila, err: fila[0] * err, values.x, evector.e)),
+    sum(map(lambda fila, err: fila[1] * err, values.x, evector.e))
+]
