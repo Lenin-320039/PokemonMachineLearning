@@ -1,7 +1,8 @@
 import values_xywalpha as values
+import ajuste_transpuesta as at
 
-def actualizar_pesos(grad, alpha):
-    # Nueva experiencia = vieja experiencia + (aprendizaje * gradiente)
-    # Usamos map para actualizar ambos pesos a la vez sin for
-    w_nuevos = list(map(lambda w_v, g: w_v + (alpha * g), values.w, grad))
-    return w_nuevos
+#sustituir el FOR por: w = w + (alpha * gradiente)
+# Usamos el alpha definido en tus valores
+
+w_nuevos = list(map(lambda w_v, g: w_v + (values.alpha * g), values.w, at.grad))
+
