@@ -1,7 +1,5 @@
 import errorvector as evector
 
-ErrorTotal1 = 0
-
-for i in range(3):
-    ErrorTotal1 = ErrorTotal1 + evector.e[i] * evector.e[i]
-
+#Elevamos cada error al cuadrado y los sumamos
+# Esto es la base del Error Cuadratico Medio
+ErrorTotal1 = sum(map(lambda err: err ** 2, evector.e))
